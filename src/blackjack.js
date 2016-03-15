@@ -5,7 +5,25 @@
  */
 function cardValue(cardName) {
 
+  if (cardName === 'ace') {
+  return 11;
+  }
+
+  if (cardName === 'jack') {
+    return 10;
+  }
+
+  if (cardName === 'queen') {
+    return 10;
+  }
+
+  if (cardName === 'king') {
+    return 10;
+  }
+
+  else {return parseInt(cardName, 10)};
 }
+
 
 /**
  * Returns the numeric sum of two numbers
@@ -14,7 +32,7 @@ function cardValue(cardName) {
  * @return {Number}
  */
 function sum(a, b) {
-
+  return (a + b);
 }
 
 /**
@@ -24,7 +42,11 @@ function sum(a, b) {
  * @return {Boolean}
  */
 function shouldSplit(cardOne, cardTwo) {
-
+  if (cardOne === cardTwo) {
+    return true;
+  } else {
+    return false;
+  }
 }
 
 /**
@@ -34,7 +56,15 @@ function shouldSplit(cardOne, cardTwo) {
  * @return {Boolean}
  */
 function shouldHit(cardOne, cardTwo) {
+  if (shouldSplit(cardOne, cardTwo)) {
+    return false;
+  }
 
+  if (cardValue(cardOne) + cardValue(cardTwo) < 17)  {
+    return true;
+  }
+
+  return false;
 }
 
 /**
@@ -45,4 +75,12 @@ function shouldHit(cardOne, cardTwo) {
  */
 function selectAction(cardOne, cardTwo) {
 
+if (shouldSplit(cardOne, cardTwo)) {
+  return 'split';
+}
+if (shouldHit(cardOne, cardTwo)) {
+  return 'hit';
+}else {
+  return 'stay';
+}
 }
